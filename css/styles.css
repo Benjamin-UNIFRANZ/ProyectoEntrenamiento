@@ -1,0 +1,367 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    background: linear-gradient(135deg, #1a1f25 0%, #17171f 100%);
+    color: #e9ecef;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    background: rgba(30, 35, 45, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    background: linear-gradient(45deg, #2b3035, #343a40);
+    border-bottom: 2px solid rgba(82, 88, 95, 0.5);
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-group-item {
+    background: rgba(43, 48, 53, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(73, 80, 87, 0.2);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background: rgba(52, 58, 64, 0.9);
+    transform: translateX(10px);
+}
+
+.badge {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+    animation: pulse 2s infinite;
+}
+
+.exercise-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #0dcaf0;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+.card-special {
+    background: linear-gradient(135deg, rgba(25, 25, 36, 0.9), rgba(35, 35, 45, 0.8));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 0 15px rgba(66, 135, 245, 0.3),
+        inset 0 0 20px rgba(66, 135, 245, 0.2);
+    animation: borderGlow 3s infinite alternate;
+}
+
+.card-special::before {
+    content: '';
+    position: absolute;
+    top: -2px; right: -2px; bottom: -2px; left: -2px;
+    background: linear-gradient(45deg, #4287f5, #3a36e7, #34d399);
+    border-radius: inherit;
+    z-index: -1;
+    animation: gradientBorder 3s ease infinite;
+}
+
+.card-special .card-header {
+    background: linear-gradient(45deg, #1a1f25 30%, #2a2f35 100%);
+    border-bottom: 2px solid rgba(66, 135, 245, 0.3);
+}
+
+.card-special .list-group-item {
+    background: rgba(30, 35, 45, 0.4);
+    border-left: 4px solid #4287f5;
+    margin: 10px 0;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+}
+
+.card-special .list-group-item:hover {
+    transform: translateX(10px);
+    background: rgba(40, 45, 55, 0.6);
+    border-left: 4px solid #34d399;
+}
+
+.card-special .exercise-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes gradientBorder {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes borderGlow {
+    from { box-shadow: 0 0 20px rgba(66, 135, 245, 0.3); }
+    to { box-shadow: 0 0 30px rgba(66, 135, 245, 0.6); }
+}
+
+/* Ajustes responsivos para cards */
+@media (max-width: 576px) {
+    .card-header {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .list-group-item {
+        padding: 0.75rem;
+        margin-bottom: 8px;
+    }
+
+    .badge {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .exercise-icon {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+
+    .card-body {
+        padding: 0.75rem;
+    }
+
+    .card-special .list-group-item {
+        margin: 8px 0;
+        border-left: 3px solid #4287f5;
+    }
+}
+
+/* Ajustes extra para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .list-group-item {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+.navbar-special {
+    background: rgba(26, 31, 37, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(66, 135, 245, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link-special {
+    position: relative;
+    color: #fff !important;
+    margin: 0 15px;
+    padding: 8px 15px !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link-special::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #4287f5, #34d399);
+    border-radius: 8px;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.nav-link-special:hover::before {
+    opacity: 0.2;
+}
+
+.nav-link-special.active {
+    background: linear-gradient(45deg, rgba(66, 135, 245, 0.2), rgba(52, 211, 153, 0.2));
+    border: 1px solid rgba(66, 135, 245, 0.3);
+}
+
+/* Estilos Navbar Responsive */
+.navbar-toggler {
+    border: 1px solid rgba(66, 135, 245, 0.3);
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(26, 31, 37, 0.8);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(66, 135, 245, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(26, 31, 37, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border-radius: 12px;
+        margin-top: 1rem;
+        border: 1px solid rgba(66, 135, 245, 0.2);
+    }
+    
+    .nav-link-special {
+        margin: 0.5rem 0;
+    }
+    /* Hacer mas pequeño el boton navbar togler */
+    .navbar-toggler {
+        padding: 0.25rem;
+    }
+    /* hacer mas pequeño el icono togler */
+    .navbar-toggler-icon {
+        background-size: 28px;
+    }
+}
+
+/* Lista Horizontal de Navegación */
+.quick-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.quick-nav-item {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 31, 37, 0.8);
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid rgba(66, 135, 245, 0.3);
+    transition: all 0.3s ease;
+}
+
+.quick-nav-item::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #4287f5, #34d399);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quick-nav-item:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.quick-nav-item:hover::before {
+    opacity: 1;
+}
+
+/* Mostrar navegación rápida solo en móviles */
+@media (min-width: 992px) {
+    .quick-nav {
+        display: none;
+    }
+}
+
+/* Optimizar tamaño en pantallas muy pequeñas */
+@media (max-width: 400px) {
+    .quick-nav {
+        gap: 0.5rem;
+    }
+    .quick-nav-item {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
+
+
+.brand-special {
+    font-weight: 600;
+    background: linear-gradient(45deg, #4287f5, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(66, 135, 245, 0.3);
+}
+
+@media (max-width: 576px) {
+    .brand-special {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
+.premium-badge {
+    background: linear-gradient(45deg, #4287f5, #34d399);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
