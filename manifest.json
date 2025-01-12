@@ -1,0 +1,33 @@
+{
+    "name": "Mi Entrenamiento",
+    "short_name": "Entrenamiento",
+    "description": "Aplicación para llevar un control de tu entrenamiento",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1f25",
+    "theme_color": "#1a1f25",
+    "orientation": "portrait",
+    "icons":[
+       {
+         "src": "assets/images/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+    },
+    {
+        "src":"assets/images/icon-512.png",
+        "sizes":"512x512",
+        "type":"image/png",
+        "purpose":"any maskable"
+    }
+    ],
+    "shortcuts":[
+        {
+            "name":"Mi Entrenamiento",
+            "short_name":"Entrenamiento",
+            "description":"Control de tu entrenamiento",
+            "url":"/"
+        }
+    ]
+
+}
