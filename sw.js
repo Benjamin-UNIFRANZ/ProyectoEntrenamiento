@@ -15,18 +15,19 @@ const ASSETS = [
 
 // Install SW
 
-self.addEventListener('install', (event) => {
+
+self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(ASSETS))
-            .then(self.skipWaiting())
-            .catch((err) => console.log(err))
+            .then(cache => cache.addAll(ASSETS))
+            .then(() => self.skipWaiting())
+            .catch(error => console.error('Error en instalación:', error))
     );
 });
 
 // Activate SW
 
-self.addEventListener('activate', event=>{
+self.addEventListener('activate', event => {
     event.waitUntil(
         Promise.all([
             caches.keys()
@@ -34,7 +35,7 @@ self.addEventListener('activate', event=>{
                     keys.filter(key => key !== CACHE_NAME)
                         .map(key => caches.delete(key))
                 )),
-                self.clients.claim()
+            self.clients.claim()
         ])
     );
 });
@@ -89,12 +90,13 @@ self.addEventListener('fetch', (event) => {
                         caches.open(CACHE_NAME)
                             .then(cache => {
                                 cache.put(event.request, responseToCache); // Almacena la solicitud y la respuesta en la caché
-                            });
+                            })
+                            .catch(console.error);
 
                         return response; // Devuelve la respuesta original al navegador
                     })
             })
-            .catch(err => console.log(err)) // Maneja cualquier error que ocurra durante el proceso
+            .catch(() => new Response('Sin conexión')) // Maneja cualquier error que ocurra durante el proceso
     );
 });
 
