@@ -1,4 +1,4 @@
-const CACHE_NAME = 'verson-1.13';
+const CACHE_NAME = 'verson-1.14';
 const urlsToCache = ['index.html'];
 
 const ASSETS = [
